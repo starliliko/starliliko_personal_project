@@ -1,0 +1,10 @@
+oscilloscope\lv_printf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_printf.c
+oscilloscope\lv_printf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_printf.h
+oscilloscope\lv_printf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\../lv_conf_internal.h
+oscilloscope\lv_printf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stdint.h
+oscilloscope\lv_printf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\../lv_conf_kconfig.h
+oscilloscope\lv_printf.o: ..\Middlewares\LVGL\GUI\lvgl\examples\porting\../../lv_conf.h
+oscilloscope\lv_printf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stdarg.h
+oscilloscope\lv_printf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stddef.h
+oscilloscope\lv_printf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_types.h
+oscilloscope\lv_printf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stdbool.h

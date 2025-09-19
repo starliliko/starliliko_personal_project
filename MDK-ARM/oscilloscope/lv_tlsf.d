@@ -1,0 +1,13 @@
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_tlsf.c
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\../lv_conf_internal.h
+oscilloscope\lv_tlsf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stdint.h
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\../lv_conf_kconfig.h
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\examples\porting\../../lv_conf.h
+oscilloscope\lv_tlsf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\limits.h
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_tlsf.h
+oscilloscope\lv_tlsf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stddef.h
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_mem.h
+oscilloscope\lv_tlsf.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\string.h
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_types.h
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_log.h
+oscilloscope\lv_tlsf.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_assert.h

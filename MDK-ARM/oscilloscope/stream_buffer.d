@@ -1,0 +1,14 @@
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+oscilloscope\stream_buffer.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stdint.h
+oscilloscope\stream_buffer.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\string.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+oscilloscope\stream_buffer.o: D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin\..\include\stddef.h
+oscilloscope\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+oscilloscope\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h
