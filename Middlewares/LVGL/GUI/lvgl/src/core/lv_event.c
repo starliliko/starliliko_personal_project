@@ -120,6 +120,7 @@ lv_event_code_t lv_event_get_code(lv_event_t * e)
     return e->code & ~LV_EVENT_PREPROCESS;
 }
 
+
 void * lv_event_get_param(lv_event_t * e)
 {
     return e->param;

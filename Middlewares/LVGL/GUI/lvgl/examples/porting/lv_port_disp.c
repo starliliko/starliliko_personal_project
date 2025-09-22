@@ -9,7 +9,7 @@
 /*********************
  *      INCLUDES
  *********************/
-#include "lv_port_disp_template.h"
+#include "lv_port_disp.h"
 #include "../../lvgl.h"
 /* 导入lcd驱动头文件 */
 #include "./BSP/LCD/lcd.h"

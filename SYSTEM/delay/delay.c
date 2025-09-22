@@ -26,7 +26,7 @@
 #include "./SYSTEM/delay/delay.h"
 #include "./SYSTEM/sys/sys.h"
 
-static uint32_t g_fac_us = 0; /* us延时倍乘数 */
+extern TIM_HandleTypeDef htim7; // TIM7句柄，需在其他地方初始化
 
 /* 如果SYS_SUPPORT_OS定义了,说明要支持OS了(不限于UCOS) */
 #if SYS_SUPPORT_OS
@@ -35,21 +35,6 @@ static uint32_t g_fac_us = 0; /* us延时倍乘数 */
 #include "FreeRTOS.h"
 #include "task.h"
 
-extern void xPortSysTickHandler(void);
-
-/**
- * @brief     systick中断服务函数,使用OS时用到
- * @param     ticks: 延时的节拍数
- * @retval    无
- */
-// void SysTick_Handler(void)
-// {
-//     HAL_IncTick();
-//     if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED) /* OS开始跑了,才执行正常的调度处理 */
-//     {
-//         xPortSysTickHandler();
-//     }
-// }
 #endif
 
 /**
@@ -57,77 +42,70 @@ extern void xPortSysTickHandler(void);
  * @param     sysclk: 系统时钟频率, 即CPU频率(rcc_c_ck), 168Mhz
  * @retval    无
  */
-void delay_init(uint16_t sysclk)
+void delay_init(void)
 {
-#if SYS_SUPPORT_OS /* 如果需要支持OS */
-    uint32_t reload;
-#endif
-    HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK); /* SYSTICK使用内核时钟源,同CPU同频率 */
-    g_fac_us = sysclk;                                   /* 不论是否使用OS,g_fac_us都需要使用 */
-#if SYS_SUPPORT_OS                                       /* 如果需要支持OS. */
-    reload = sysclk;                                     /* 每秒钟的计数次数 单位为M */
-    reload *= 1000000 / configTICK_RATE_HZ;              /* 根据delay_ostickspersec设定溢出时间,reload为24位
-                                                            寄存器,最大值:16777216,在168M下,约合0.099s左右 */
-    SysTick->CTRL |= SysTick_CTRL_TICKINT_Msk;           /* 开启SYSTICK中断 */
-    SysTick->LOAD = reload;                              /* 每1/delay_ostickspersec秒中断一次 */
-    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;            /* 开启SYSTICK */
-#endif
+    // __HAL_RCC_TIM7_CLK_ENABLE(); // 使能TIM7时钟
+
+    // htim7.Instance = TIM7;
+    // htim7.Init.Prescaler = 83; // 84MHz/84=1MHz，每1us计数一次
+    // htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+    // htim7.Init.Period = 0xFFFF; // 最大计数值，方便回绕
+    // htim7.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    // htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+
+    // HAL_TIM_Base_Init(&htim7);
+    // HAL_TIM_Base_Start(&htim7); // 启动定时器
 }
 
-#if SYS_SUPPORT_OS /* 如果需要支持OS, 用以下代码 */
+#if SYS_SUPPORT_OS // 使用FreeRTOS时
 
-/**
- * @brief     延时nus
- * @param     nus: 要延时的us数
- * @note      nus取值范围: 0~8947848(最大值即2^32 / g_fac_us @g_fac_us = 168)
- * @retval    无
- */
 void delay_us(uint32_t nus)
 {
     uint32_t ticks;
     uint32_t told, tnow, tcnt = 0;
-    uint32_t reload = SysTick->LOAD; /* LOAD的值 */
+    uint32_t reload = htim7.Instance->ARR; // TIM7自动重载值
 
-    ticks = nus * g_fac_us; /* 需要的节拍数 */
-    told = SysTick->VAL;    /* 刚进入时的计数器值 */
+    ticks = nus;                          // 1us/计数，无需倍乘
+    told = __HAL_TIM_GET_COUNTER(&htim7); // 刚进入时的计数器值
     while (1)
     {
-        tnow = SysTick->VAL;
+        tnow = __HAL_TIM_GET_COUNTER(&htim7);
         if (tnow != told)
         {
-            if (tnow < told)
+            if (tnow > told)
             {
-                tcnt += told - tnow; /* 这里注意一下SYSTICK是一个递减的计数器就可以了 */
+                tcnt += tnow - told; // 正常计数
             }
             else
             {
-                tcnt += reload - tnow + told;
+                tcnt += reload - told + tnow + 1; // 处理计数器回绕
             }
             told = tnow;
             if (tcnt >= ticks)
             {
-                break; /* 时间超过/等于要延迟的时间,则退出 */
+                break; // 时间超过/等于要延迟的时间,则退出
             }
         }
     }
 }
 
-/**
- * @brief     延时nms
- * @param     nms: 要延时的ms数 (0< nms <= 65535)
- * @retval    无
- */
 void delay_ms(uint16_t nms)
 {
-    uint32_t i;
-
-    for (i = 0; i < nms; i++)
+    if (xTaskGetSchedulerState() == taskSCHEDULER_NOT_STARTED)
     {
-        delay_us(1000);
+        // 调度器未启动，使用忙等
+        while (nms--)
+        {
+            delay_us(1000);
+        }
+    }
+    else
+    {
+        vTaskDelay(nms); // 调度器已启动，使用FreeRTOS延时
     }
 }
 
-#else /* 不使用OS时, 用以下代码 */
+#else // 裸机模式
 
 /**
  * @brief       延时nus
@@ -137,33 +115,29 @@ void delay_ms(uint16_t nms)
  */
 void delay_us(uint32_t nus)
 {
-    uint32_t ticks;
-    uint32_t told, tnow, tcnt = 0;
-    uint32_t reload = SysTick->LOAD; /* LOAD的值 */
-    ticks = nus * g_fac_us;          /* 需要的节拍数 */
-    told = SysTick->VAL;             /* 刚进入时的计数器值 */
+    uint32_t start, now, cnt = 0;
+    start = __HAL_TIM_GET_COUNTER(&htim7); // 记录初始计数值
     while (1)
     {
-        tnow = SysTick->VAL;
-        if (tnow != told)
+        now = __HAL_TIM_GET_COUNTER(&htim7);
+        if (now != start)
         {
-            if (tnow < told)
+            if (now > start)
             {
-                tcnt += told - tnow; /* 这里注意一下SYSTICK是一个递减的计数器就可以了 */
+                cnt += now - start;
             }
             else
             {
-                tcnt += reload - tnow + told;
+                cnt += (htim7.Instance->ARR + 1) - start + now; // 处理计数器回绕
             }
-            told = tnow;
-            if (tcnt >= ticks)
+            start = now;
+            if (cnt >= nus)
             {
-                break; /* 时间超过/等于要延迟的时间,则退出 */
+                break; // 达到延时时间，退出
             }
         }
     }
 }
-
 /**
  * @brief       延时nms
  * @param       nms: 要延时的ms数 (0< nms <= 65535)
@@ -171,29 +145,19 @@ void delay_us(uint32_t nus)
  */
 void delay_ms(uint16_t nms)
 {
-    uint32_t repeat = nms / 30; /*  这里用30,是考虑到可能有超频应用 */
+    uint32_t repeat = nms / 30; // 每次最多延时30ms，防止溢出
     uint32_t remain = nms % 30;
 
     while (repeat)
     {
-        delay_us(30 * 1000); /* 利用delay_us 实现 1000ms 延时 */
+        delay_us(30 * 1000); // 利用delay_us实现30ms延时
         repeat--;
     }
 
     if (remain)
     {
-        delay_us(remain * 1000); /* 利用delay_us, 把尾数延时(remain ms)给做了 */
+        delay_us(remain * 1000); // 剩余部分延时
     }
 }
 
-/**
-  * @brief HAL库内部函数用到的延时
-           HAL库的延时默认用Systick，如果我们没有开Systick的中断会导致调用这个延时后无法退出
-  * @param Delay 要延时的毫秒数
-  * @retval None
-  */
-void HAL_Delay(uint32_t Delay)
-{
-    delay_ms(Delay);
-}
 #endif

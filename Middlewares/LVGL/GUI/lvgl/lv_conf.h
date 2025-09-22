@@ -94,6 +94,7 @@
 /* 输入设备的读取周期(以毫秒为单位) */
 #define LV_INDEV_DEF_READ_PERIOD            4     /*[ms]*/
 
+// 使用freertos的时基源
 /* 使用自定义tick源，以毫秒为单位告诉运行时间。它不需要手动更新 `lv_tick_inc()` */
 #define LV_TICK_CUSTOM                      1
 #if LV_TICK_CUSTOM

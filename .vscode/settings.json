@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "btim.h": "c",
+        "sys.h": "c",
+        "stm32f4xx.h": "c",
+        "sram.h": "c",
+        "delay.h": "c",
+        "freertos.h": "c",
+        "lv_port_disp_template.h": "c",
+        "lv_port_disp.h": "c",
+        "malloc.h": "c"
+    }
+}
