@@ -8,21 +8,22 @@
 #include "lv_port_indev.h"
 #include "lvgl.h"
 
+#include "oscilloscope.h"
 void lvgl_init(void)
 {
-    lv_init();            /* lvglÏµÍ³³õÊ¼»¯ */
-    lv_port_disp_init();  /* lvglÏÔÊ¾½Ó¿Ú³õÊ¼»¯,·ÅÔÚlv_init()µÄºóÃæ */
-    lv_port_indev_init(); /* lvglÊäÈë½Ó¿Ú³õÊ¼»¯,·ÅÔÚlv_init()µÄºóÃæ */
+    lv_init();            /* lvglÏµÍ³ï¿½ï¿½Ê¼ï¿½ï¿½ */
+    lv_port_disp_init();  /* lvglï¿½ï¿½Ê¾ï¿½Ó¿Ú³ï¿½Ê¼ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½lv_init()ï¿½Äºï¿½ï¿½ï¿½ */
+    lv_port_indev_init(); /* lvglï¿½ï¿½ï¿½ï¿½Ó¿Ú³ï¿½Ê¼ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½lv_init()ï¿½Äºï¿½ï¿½ï¿½ */
 }
 
 void lvgl_task(void *argument)
 {
-    lvgl_init();      /* lvgl³õÊ¼»¯ */
-    lv_demo_stress(); /* ²âÊÔµÄdemo */
-
+    lvgl_init();      /* lvglåˆå§‹åŒ– */
+    //lv_demo_stress(); /* ï¿½ï¿½ï¿½Ôµï¿½demo */
+    create_oscilloscope_ui();
     while (1)
     {
-        lv_timer_handler(); /* LVGL¼ÆÊ±Æ÷ */
+        lv_timer_handler(); /* LVGLï¿½ï¿½Ê±ï¿½ï¿½ */
         vTaskDelay(5);
     }
 }

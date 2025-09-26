@@ -58,7 +58,7 @@ const osThreadAttr_t LEDTask_attributes = {
 osThreadId_t LVGL_TaskHandle;
 const osThreadAttr_t LVGL_Task_attributes = {
   .name = "LVGL_Task",
-  .stack_size = 1024 * 4,
+  .stack_size = 2048 * 4,
   .priority = (osPriority_t) osPriorityRealtime,
 };
 

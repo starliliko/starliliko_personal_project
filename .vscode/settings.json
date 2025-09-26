@@ -8,6 +8,10 @@
         "freertos.h": "c",
         "lv_port_disp_template.h": "c",
         "lv_port_disp.h": "c",
-        "malloc.h": "c"
+        "malloc.h": "c",
+        "task.h": "c",
+        "lvgl_task.h": "c",
+        "stdint.h": "c",
+        "stdbool.h": "c"
     }
 }

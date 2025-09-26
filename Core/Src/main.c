@@ -32,6 +32,8 @@
 #include "./MALLOC/malloc.h"
 #include "./SYSTEM/delay/delay.h"
 #include "./SYSTEM/sys/sys.h"
+#include "oscilloscope.h"
+#include "lvgl_task.h"
 
 /* USER CODE END Includes */
 
