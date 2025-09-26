@@ -11,12 +11,13 @@
 #define WAVE_HEIGHT     (SCOPE_HEIGHT - TABLE_HEIGHT)  // 波形区高度
 
 /* 其他参数 */
-#define GRID_X_COUNT    10      
+#define GRID_X_COUNT    8      
 #define GRID_Y_COUNT    8       
-#define BUFFER_SIZE     128     
-#define TIME_DIV        1       // 时基：1ms/格
+#define BUFFER_SIZE     256     
+#define TIME_DIV        0.1       // 时基：0.1ms/格
 #define TRIGGER_LEVEL   0        // 触发电平：0V
 
+//最高可到160k
 /* 电压参数 - 明确每格0.5V */
 #define V_PER_DIV       0.5f    // 每格电压：0.5V（核心参数，用于Y轴标识）
 #define V_RANGE         4.0f    // 总电压范围：4V（-2V ~ +2V）
