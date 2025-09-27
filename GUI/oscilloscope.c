@@ -1,6 +1,6 @@
 #include "lvgl/lvgl.h"
 #include <stdlib.h>
-#include <math.h>
+#include "arm_math.h"
 #include <stdio.h>
 #include <string.h>  
 #include "oscilloscope.h"  

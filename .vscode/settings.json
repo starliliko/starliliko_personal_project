@@ -14,6 +14,7 @@
         "stdint.h": "c",
         "stdbool.h": "c",
         "oscilloscope.h": "c",
-        "wave_processing.h": "c"
+        "wave_processing.h": "c",
+        "string.h": "c"
     }
 }

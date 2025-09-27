@@ -853,11 +853,12 @@ f407xx.o -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32
 F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include
  -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Th
 ird_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/S
-TM32F4xx/Include -I../Drivers/CMSIS/Include -I.\RTE\_oscilloscope -ID:\IDE\keil
-5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include -ID:\IDE\keil5\keil5MDK\Pac
-ks\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predef
-ine="__UVISION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="STM32F
-407xx SETA 1" --list=startup_stm32f407xx.lst startup_stm32f407xx.s
+TM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/ARM/DSP/Inc -I.
+\RTE\_oscilloscope -ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Inc
+lude -ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Devi
+ce\ST\STM32F4xx\Include --predefine="__UVISION_VERSION SETA 528" --predefine="_
+RTE_ SETA 1" --predefine="STM32F407xx SETA 1" --list=startup_stm32f407xx.lst st
+artup_stm32f407xx.s
 
 
 

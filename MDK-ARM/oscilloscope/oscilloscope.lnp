@@ -214,6 +214,7 @@
 "oscilloscope\lvgl_task.o"
 "oscilloscope\oscilloscope.o"
 "oscilloscope\wave_processing.o"
+"../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4lf_math.lib"
 --strict --scatter "oscilloscope\oscilloscope.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
