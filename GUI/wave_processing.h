@@ -27,46 +27,6 @@ typedef struct {
 } wave_params_t;
 
 /**
- * 生成正弦波
- * @param freq      频率 (Hz)
- * @param amp       幅度 (V)
- * @param offset    直流偏移 (V)
- * @param sample_interval 采样间隔 (秒)
- * @param buffer    输出缓冲区
- * @param buf_len   缓冲区长度
- * @param phase     相位指针（用于连续生成波形）
- */
-void generate_sine_wave(float freq, float amp, float offset, float sample_interval, 
-                       float *buffer, uint16_t buf_len, float *phase);
-
-/**
- * 生成方波
- * @param freq      频率 (Hz)
- * @param amp       幅度 (V)
- * @param offset    直流偏移 (V)
- * @param duty_cycle 占空比 (0.0-1.0)
- * @param sample_interval 采样间隔 (秒)
- * @param buffer    输出缓冲区
- * @param buf_len   缓冲区长度
- * @param phase     相位指针（用于连续生成波形）
- */
-void generate_square_wave(float freq, float amp, float offset, float duty_cycle,
-                         float sample_interval, float *buffer, uint16_t buf_len, float *phase);
-
-/**
- * 生成三角波
- * @param freq      频率 (Hz)
- * @param amp       幅度 (V)
- * @param offset    直流偏移 (V)
- * @param sample_interval 采样间隔 (秒)
- * @param buffer    输出缓冲区
- * @param buf_len   缓冲区长度
- * @param phase     相位指针（用于连续生成波形）
- */
-void generate_triangle_wave(float freq, float amp, float offset, float sample_interval,
-                           float *buffer, uint16_t buf_len, float *phase);
-
-/**
  * 计算波形频率
  * @param wave_buf  波形数据缓冲区（电压值）
  * @param buf_len   缓冲区长度
@@ -108,5 +68,19 @@ wave_type_t determine_wave_type(const float *wave_buf, uint16_t buf_len,
  */
 wave_params_t process_external_wave(const float *input_buf, float *output_buf, 
                                    uint16_t buf_len, float sample_interval);
+
+/**
+ * 从波形参数结构体获取波形类型字符串
+ * @param type 波形类型枚举值
+ * @return 对应的字符串描述
+ */
+static inline const char* get_wave_type_string(wave_type_t type) {
+    switch(type) {
+        case WAVE_TYPE_SINE: return "Sine";
+        case WAVE_TYPE_SQUARE: return "Square";
+        case WAVE_TYPE_TRIANGLE: return "Triangle";
+        default: return "Unknown";
+    }
+}
 
 #endif // WAVE_PROCESSING_H

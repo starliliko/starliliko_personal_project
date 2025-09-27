@@ -1609,6 +1609,11 @@
               <FileType>1</FileType>
               <FilePath>..\GUI\oscilloscope.c</FilePath>
             </File>
+            <File>
+              <FileName>wave_processing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\wave_processing.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

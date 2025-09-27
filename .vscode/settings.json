@@ -12,6 +12,8 @@
         "task.h": "c",
         "lvgl_task.h": "c",
         "stdint.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "oscilloscope.h": "c",
+        "wave_processing.h": "c"
     }
 }

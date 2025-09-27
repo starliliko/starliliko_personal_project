@@ -213,6 +213,7 @@
 "oscilloscope\lv_font_montserrat_28_compr_az.o"
 "oscilloscope\lvgl_task.o"
 "oscilloscope\oscilloscope.o"
+"oscilloscope\wave_processing.o"
 --strict --scatter "oscilloscope\oscilloscope.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

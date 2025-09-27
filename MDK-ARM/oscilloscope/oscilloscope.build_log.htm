@@ -27,36 +27,34 @@ Project File Date:  09/27/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin'
 Build target 'oscilloscope'
-compiling lvgl_task.c...
-..\APP\lvgl_task.h(10): warning:  #1-D: last line of file ends without a newline
-  #endif // LVGL_TASK_H
-../GUI/oscilloscope.h(44): warning:  #1-D: last line of file ends without a newline
-  #endif // OSCILLOSCOPE_H
-..\APP\lvgl_task.c(29): warning:  #1-D: last line of file ends without a newline
-  }
-..\APP\lvgl_task.c: 3 warnings, 0 errors
 compiling oscilloscope.c...
 ..\GUI\oscilloscope.h(44): warning:  #1-D: last line of file ends without a newline
   #endif // OSCILLOSCOPE_H
-..\GUI\oscilloscope.c(57): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          float sample_interval = (TIME_DIV * 1e-3f * GRID_X_COUNT) / buf_len;  // 采样间隔（秒�?
-..\GUI\oscilloscope.c(113): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          v_buf[i] = (phase < M_PI) ? amp : -amp;
+..\GUI\oscilloscope.c(64): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          float sample_interval = (TIME_DIV * 1e-3f * GRID_X_COUNT) / buf_len;
+..\GUI\oscilloscope.c(75): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;
 ..\GUI\oscilloscope.c(129): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;  // 总显示时间：0.8ms
-..\GUI\oscilloscope.c(405): warning:  #1-D: last line of file ends without a newline
+          v_buf[i] = (phase < M_PI) ? amp : -amp;
+..\GUI\oscilloscope.c(137): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;
+..\GUI\oscilloscope.c(391): warning:  #1-D: last line of file ends without a newline
   }
-..\GUI\oscilloscope.c: 5 warnings, 0 errors
-compiling main.c...
-../GUI/oscilloscope.h(44): warning:  #1-D: last line of file ends without a newline
-  #endif // OSCILLOSCOPE_H
-../APP/lvgl_task.h(10): warning:  #1-D: last line of file ends without a newline
-  #endif // LVGL_TASK_H
-../Core/Src/main.c: 2 warnings, 0 errors
+..\GUI\oscilloscope.c(28): warning:  #177-D: variable "ch1_avg_v"  was declared but never referenced
+  static float ch1_max_v, ch1_min_v, ch1_avg_v, ch1_rms_v;
+..\GUI\oscilloscope.c(29): warning:  #177-D: variable "ch2_avg_v"  was declared but never referenced
+  static float ch2_max_v, ch2_min_v, ch2_avg_v, ch2_rms_v;
+..\GUI\oscilloscope.c(31): warning:  #550-D: variable "ch1_type"  was set but never used
+  static wave_type_t ch1_type, ch2_type;
+..\GUI\oscilloscope.c(31): warning:  #550-D: variable "ch2_type"  was set but never used
+  static wave_type_t ch1_type, ch2_type;
+..\GUI\oscilloscope.c(45): warning:  #177-D: function "calculate_frequency"  was declared but never referenced
+  static float calculate_frequency(int16_t *wave_buf, uint16_t buf_len) {
+..\GUI\oscilloscope.c: 11 warnings, 0 errors
 linking...
-Program Size: Code=188736 RO-data=31296 RW-data=772 ZI-data=97244  
+Program Size: Code=190124 RO-data=31300 RW-data=796 ZI-data=97244  
 FromELF: creating hex file...
-"oscilloscope\oscilloscope.axf" - 0 Error(s), 10 Warning(s).
+"oscilloscope\oscilloscope.axf" - 0 Error(s), 11 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -79,7 +77,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

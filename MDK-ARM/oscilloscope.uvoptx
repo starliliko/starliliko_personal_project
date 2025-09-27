@@ -160,6 +160,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>high_water</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ch1_test_v</ItemText>
+        </Ww>
       </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
@@ -2872,6 +2877,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\GUI\oscilloscope.c</PathWithFileName>
       <FilenameWithoutPath>oscilloscope.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>215</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\GUI\wave_processing.c</PathWithFileName>
+      <FilenameWithoutPath>wave_processing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
