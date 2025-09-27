@@ -17,8 +17,6 @@ static float ch1_current_v, ch1_freq;  // 表格显示的测量值（电压、�
 static float ch2_current_v, ch2_freq;
 
 // 外部波形相关变量
-static wave_display_mode_t ch1_mode = WAVE_MODE_TEST;  // 通道1显示模式
-static wave_display_mode_t ch2_mode = WAVE_MODE_TEST;  // 通道2显示模式
 static float ch1_external_v[BUFFER_SIZE] = {0};       // 通道1外部输入
 static float ch2_external_v[BUFFER_SIZE] = {0};       // 通道2外部输入
 static float ch1_test_v[BUFFER_SIZE] = {0};           // 通道1测试波形
@@ -41,133 +39,19 @@ static void draw_waveforms(lv_event_t *e);
 static void update_measurement_table(void);  // 保留表格更新函数
 static void refresh_scope(lv_timer_t *timer);
 
-/* 频率计算（表格显示频率数据来源） */
-static float calculate_frequency(int16_t *wave_buf, uint16_t buf_len) {
-    float freq = 0.0f;
-    uint16_t zero_cross_cnt = 0;
-    uint16_t zero_cross_pos[10] = {0};
-    const int16_t trigger_level = 0;  // 0V过零点
-
-    // 检测上升沿过零点（前一采样点<0，当前采样点>=0）
-    for (uint16_t i = 1; i < buf_len; i++) {
-        if (wave_buf[i-1] < trigger_level && wave_buf[i] >= trigger_level) {
-            zero_cross_pos[zero_cross_cnt++] = i;
-            if (zero_cross_cnt >= sizeof(zero_cross_pos)/sizeof(zero_cross_pos[0])) {
-                break;  // 最多检测10个过零点
-            }
-        }
-    }
-
-    // 至少2个过零点计算周期
-    if (zero_cross_cnt >= 2) {
-        uint16_t cycle_samples = zero_cross_pos[1] - zero_cross_pos[0];
-        float sample_interval = (TIME_DIV * 1e-3f * GRID_X_COUNT) / buf_len;
-        float cycle = sample_interval * cycle_samples;
-        freq = (cycle > 1e-6f) ? (1.0f / cycle) : 0.0f;
-    }
-
-    return freq;
-}
-
 /* 计算测量参数（表格数据来源） */
 static void calculate_all_measurements(void) {
-    // 计算采样间隔（与波形生成保持一致）
-    const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;
-    const float sample_interval = total_display_time / BUFFER_SIZE;
     
-    // 通道1测量
-    const float *ch1_v_buf = (ch1_mode == WAVE_MODE_TEST) ? ch1_test_v : ch1_external_v;
-    wave_params_t ch1_params = {0};
-    
-    // 使用wave_processing模块处理波形
-    ch1_params.frequency = calculate_wave_frequency(ch1_v_buf, BUFFER_SIZE, sample_interval);
-    measure_wave_voltage(ch1_v_buf, BUFFER_SIZE, 
-                        &ch1_max_v, &ch1_min_v, &ch1_current_v, &ch1_rms_v);
-    ch1_params.type = determine_wave_type(ch1_v_buf, BUFFER_SIZE, 
-                                         ch1_params.frequency, sample_interval);
-    ch1_params.amplitude = (ch1_max_v - ch1_min_v) / 2.0f;  // 计算幅度
-    
-    // 更新通道1显示参数
-    ch1_freq = ch1_params.frequency;
-    ch1_type = ch1_params.type;  // 存储波形类型用于表格显示
 
-    // 通道2测量
-    const float *ch2_v_buf = (ch2_mode == WAVE_MODE_TEST) ? ch2_test_v : ch2_external_v;
-    wave_params_t ch2_params = {0};
-    
-    // 使用wave_processing模块处理波形
-    ch2_params.frequency = calculate_wave_frequency(ch2_v_buf, BUFFER_SIZE, sample_interval);
-    measure_wave_voltage(ch2_v_buf, BUFFER_SIZE, 
-                        &ch2_max_v, &ch2_min_v, &ch2_current_v, &ch2_rms_v);
-    ch2_params.type = determine_wave_type(ch2_v_buf, BUFFER_SIZE, 
-                                         ch2_params.frequency, sample_interval);
-    ch2_params.amplitude = (ch2_max_v - ch2_min_v) / 2.0f;  // 计算幅度
-    
-    // 更新通道2显示参数
-    ch2_freq = ch2_params.frequency;
-    ch2_type = ch2_params.type;  // 存储波形类型用于表格显示
 }
 
-
-/* 测试波形生成函数 */
-static void generate_sine_wave(float target_freq, float amp, float sample_interval, float *v_buf, uint16_t buf_len) {
-    static float phase = 0.0f;
-    float phase_step = 2 * M_PI * target_freq * sample_interval;
-
-    for (uint16_t i = 0; i < buf_len; i++) {
-        v_buf[i] = amp * sin(phase);
-        phase += phase_step;
-        if (phase >= 2 * M_PI) phase -= 2 * M_PI;
-    }
-}
-
-static void generate_square_wave(float target_freq, float amp, float sample_interval, float *v_buf, uint16_t buf_len) {
-    static float phase = 0.0f;
-    float phase_step = 2 * M_PI * target_freq * sample_interval;
-
-    for (uint16_t i = 0; i < buf_len; i++) {
-        v_buf[i] = (phase < M_PI) ? amp : -amp;
-        phase += phase_step;
-        if (phase >= 2 * M_PI) phase -= 2 * M_PI;
-    }
-}
 
 /* 波形数据处理（转换为像素偏移） */
 static void generate_waveforms(void) {
     const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;
     const float sample_interval = total_display_time / BUFFER_SIZE;
 
-    /* 通道1波形处理 */
-    switch (ch1_mode) {
-        case WAVE_MODE_TEST:
-            generate_sine_wave(CH1_TEST_FREQ, CH1_TEST_AMP, sample_interval, ch1_test_v, BUFFER_SIZE);
-            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
-                wave1_buffer[i] = (int16_t)(ch1_test_v[i] * PIXELS_PER_VOLT);
-            }
-            break;
-        case WAVE_MODE_EXTERNAL:
-            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
-                float clamped_v = fminf(fmaxf(ch1_external_v[i], -2.0f), 2.0f);
-                wave1_buffer[i] = (int16_t)(clamped_v * PIXELS_PER_VOLT);
-            }
-            break;
-    }
-
-    /* 通道2波形处理 */
-    switch (ch2_mode) {
-        case WAVE_MODE_TEST:
-            generate_square_wave(CH2_TEST_FREQ, CH2_TEST_AMP, sample_interval, ch2_test_v, BUFFER_SIZE);
-            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
-                wave2_buffer[i] = (int16_t)(ch2_test_v[i] * PIXELS_PER_VOLT);
-            }
-            break;
-        case WAVE_MODE_EXTERNAL:
-            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
-                float clamped_v = fminf(fmaxf(ch2_external_v[i], -2.0f), 2.0f);
-                wave2_buffer[i] = (int16_t)(clamped_v * PIXELS_PER_VOLT);
-            }
-            break;
-    }
+    
 }
 
 /* 绘制背景、网格、坐标轴 */
@@ -367,25 +251,4 @@ void create_oscilloscope_ui(void) {
     // 初始更新表格
     update_measurement_table();
     lv_obj_invalidate(measurement_table);
-}
-
-/* 外部控制接口 */
-void set_ch1_display_mode(wave_display_mode_t mode) {
-    ch1_mode = mode;
-}
-
-void set_ch2_display_mode(wave_display_mode_t mode) {
-    ch2_mode = mode;
-}
-
-void set_ch1_external_wave(const float *v_buf, uint16_t len) {
-    if (v_buf && len == BUFFER_SIZE) {
-        memcpy(ch1_external_v, v_buf, len * sizeof(float));
-    }
-}
-
-void set_ch2_external_wave(const float *v_buf, uint16_t len) {
-    if (v_buf && len == BUFFER_SIZE) {
-        memcpy(ch2_external_v, v_buf, len * sizeof(float));
-    }
 }
