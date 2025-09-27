@@ -1,6 +1,6 @@
 Dependencies for Project 'oscilloscope', Target 'oscilloscope': (DO NOT MODIFY !)
-F (startup_stm32f407xx.s)(0x68D7D081)(--cpu Cortex-M4.fp -g --apcs=interwork -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list startup_stm32f407xx.lst --xref -o oscilloscope\startup_stm32f407xx.o --depend oscilloscope\startup_stm32f407xx.d)
-F (../Core/Src/main.c)(0x68D61C7E)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\main.o --omf_browse oscilloscope\main.crf --depend oscilloscope\main.d)
+F (startup_stm32f407xx.s)(0x68D7FE09)(--cpu Cortex-M4.fp -g --apcs=interwork -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list startup_stm32f407xx.lst --xref -o oscilloscope\startup_stm32f407xx.o --depend oscilloscope\startup_stm32f407xx.d)
+F (../Core/Src/main.c)(0x68D7ECF3)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\main.o --omf_browse oscilloscope\main.crf --depend oscilloscope\main.d)
 I (../Core/Inc/main.h)(0x68CD2185)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x68CC3474)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68CD23A3)
@@ -49,7 +49,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x68CC3424)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x68CC3424)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x68CC3424)
 I (../Core/Inc/adc.h)(0x68CD2184)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/dma.h)(0x68D7D81D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/usart.h)(0x68CD23A3)
 I (../Core/Inc/gpio.h)(0x68CD2183)
 I (../Core/Inc/fsmc.h)(0x68CD2184)
@@ -58,9 +59,10 @@ I (D:/H/./SYSTEM/sys/sys.h)(0x68CD43D1)
 I (D:/H/./BSP/SRAM/sram.h)(0x66C69280)
 I (../Middlewares/./MALLOC/malloc.h)(0x66C69286)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../GUI/oscilloscope.h)(0x68D7CA6C)
+I (../GUI/oscilloscope.h)(0x68D7D320)
 I (../APP/lvgl_task.h)(0x68D60F7A)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
+I (../APP/adc_task.h)(0x68D7EDCE)
 F (../Core/Src/gpio.c)(0x68D10B62)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\gpio.o --omf_browse oscilloscope\gpio.crf --depend oscilloscope\gpio.d)
 I (../Core/Inc/gpio.h)(0x68CD2183)
 I (../Core/Inc/main.h)(0x68CD2185)
@@ -99,7 +101,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
-F (../Core/Src/freertos.c)(0x68D60FA2)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\freertos.o --omf_browse oscilloscope\freertos.crf --depend oscilloscope\freertos.d)
+F (../Core/Src/freertos.c)(0x68D7F486)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\freertos.o --omf_browse oscilloscope\freertos.crf --depend oscilloscope\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68CC3424)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -147,8 +149,46 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h)(0x68CC3424)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x68CC3424)
-F (../Core/Src/adc.c)(0x68CD2184)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\adc.o --omf_browse oscilloscope\adc.crf --depend oscilloscope\adc.d)
+F (../Core/Src/adc.c)(0x68D7FE07)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\adc.o --omf_browse oscilloscope\adc.crf --depend oscilloscope\adc.d)
 I (../Core/Inc/adc.h)(0x68CD2184)
+I (../Core/Inc/main.h)(0x68CD2185)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x68CC3474)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68CD23A3)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x68CC3474)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x68CC3474)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x68CC3474)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x68CC3475)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x68CC3475)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x68CC3475)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x68CC3475)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x68CC3475)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x68CC3474)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
+F (../Core/Src/dma.c)(0x68D7F13B)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\dma.o --omf_browse oscilloscope\dma.crf --depend oscilloscope\dma.d)
+I (../Core/Inc/dma.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x68CC3474)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68CD23A3)
@@ -223,8 +263,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
-F (../Core/Src/tim.c)(0x68D10C2D)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\tim.o --omf_browse oscilloscope\tim.crf --depend oscilloscope\tim.d)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+F (../Core/Src/tim.c)(0x68D7FAD8)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\tim.o --omf_browse oscilloscope\tim.crf --depend oscilloscope\tim.d)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x68CC3474)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68CD23A3)
@@ -299,7 +339,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
-F (../Core/Src/stm32f4xx_it.c)(0x68D10B65)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\stm32f4xx_it.o --omf_browse oscilloscope\stm32f4xx_it.crf --depend oscilloscope\stm32f4xx_it.d)
+F (../Core/Src/stm32f4xx_it.c)(0x68D7FCEA)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\stm32f4xx_it.o --omf_browse oscilloscope\stm32f4xx_it.crf --depend oscilloscope\stm32f4xx_it.d)
 I (../Core/Inc/main.h)(0x68CD2185)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x68CC3474)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68CD23A3)
@@ -336,7 +376,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
-I (../Core/Inc/stm32f4xx_it.h)(0x68D10B65)
+I (../Core/Inc/stm32f4xx_it.h)(0x68D7FCEA)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68CC3424)
 I (../Core/Inc/FreeRTOSConfig.h)(0x68D10B64)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x68CC3424)
@@ -1466,7 +1506,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
 I (D:/H/./BSP/24CXX/24cxx.h)(0x66C69280)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\BSP\IIC\myiic.c)(0x66C69280)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\myiic.o --omf_browse oscilloscope\myiic.crf --depend oscilloscope\myiic.d)
 I (D:/H/./BSP/IIC/myiic.h)(0x66C69280)
@@ -1507,7 +1547,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\BSP\KEY\key.c)(0x68D16806)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\key.o --omf_browse oscilloscope\key.crf --depend oscilloscope\key.d)
 I (D:/H/./BSP/KEY/key.h)(0x68D15BF3)
@@ -1548,7 +1588,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\BSP\LCD\lcd.c)(0x68CD27AE)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\lcd.o --omf_browse oscilloscope\lcd.crf --depend oscilloscope\lcd.d)
 I (D:/H/./BSP/LCD/lcd.h)(0x66C69280)
@@ -1592,7 +1632,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
 I (D:/H/./BSP/LCD/lcdfont.h)(0x66C69280)
 I (D:/H/./BSP/LCD/lcd_ex.c)(0x66C69280)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\BSP\SRAM\sram.c)(0x68CD2428)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\sram.o --omf_browse oscilloscope\sram.crf --depend oscilloscope\sram.d)
 I (D:/H/./BSP/SRAM/sram.h)(0x66C69280)
@@ -1829,7 +1869,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\BSP\TOUCH\ft5206.c)(0x68CD2440)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\ft5206.o --omf_browse oscilloscope\ft5206.crf --depend oscilloscope\ft5206.d)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\string.h)(0x5CEB79E2)
@@ -1876,7 +1916,7 @@ I (D:/H/./BSP/TOUCH/gt9xxx.h)(0x68D115A3)
 I (D:/H/./BSP/TOUCH/ft5206.h)(0x66C69280)
 I (D:/H/./BSP/TOUCH/ctiic.h)(0x66C69280)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\BSP\TOUCH\gt9xxx.c)(0x68CD2440)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\gt9xxx.o --omf_browse oscilloscope\gt9xxx.crf --depend oscilloscope\gt9xxx.d)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\string.h)(0x5CEB79E2)
@@ -1923,7 +1963,7 @@ I (D:/H/./BSP/TOUCH/gt9xxx.h)(0x68D115A3)
 I (D:/H/./BSP/TOUCH/ft5206.h)(0x66C69280)
 I (D:/H/./BSP/TOUCH/ctiic.h)(0x66C69280)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\BSP\TOUCH\touch.c)(0x66C69280)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\touch.o --omf_browse oscilloscope\touch.crf --depend oscilloscope\touch.d)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
@@ -1970,7 +2010,7 @@ I (D:/H/./BSP/TOUCH/gt9xxx.h)(0x68D115A3)
 I (D:/H/./BSP/TOUCH/ft5206.h)(0x66C69280)
 I (D:/H/./BSP/24CXX/24cxx.h)(0x66C69280)
 I (D:/H/./SYSTEM/delay/delay.h)(0x68D11119)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 F (..\SYSTEM\sys\sys.c)(0x68CD3BFC)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\sys.o --omf_browse oscilloscope\sys.crf --depend oscilloscope\sys.d)
 I (D:/H/./SYSTEM/sys/sys.h)(0x68CD43D1)
@@ -2047,7 +2087,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
-I (../Core/Inc/tim.h)(0x68D10C2D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
 I (../Core/Inc/main.h)(0x68CD2185)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68CC3424)
 I (../Core/Inc/FreeRTOSConfig.h)(0x68D10B64)
@@ -12734,8 +12774,72 @@ I (../Middlewares/LVGL/GUI_APP/demos/stress/../keypad_encoder/lv_demo_keypad_enc
 I (../Middlewares/LVGL/GUI_APP/demos/stress/../music/lv_demo_music.h)(0x66C69286)
 I (../Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_disp.h)(0x685A551A)
 I (../Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_indev.h)(0x66C69284)
-I (../GUI/oscilloscope.h)(0x68D7CA6C)
-F (..\GUI\oscilloscope.c)(0x68D7CEB7)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\oscilloscope.o --omf_browse oscilloscope\oscilloscope.crf --depend oscilloscope\oscilloscope.d)
+I (../GUI/oscilloscope.h)(0x68D7D320)
+F (..\APP\adc_task.c)(0x68D7FF4B)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\adc_task.o --omf_browse oscilloscope\adc_task.crf --depend oscilloscope\adc_task.d)
+I (..\APP\adc_task.h)(0x68D7EDCE)
+I (../Core/Inc/main.h)(0x68CD2185)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x68CC3474)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68CD23A3)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x68CC3474)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x68CC3474)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x68CC3474)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x68CC3475)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x68CC3475)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x68CC3475)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x68CC3475)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x68CC3475)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x68CC3474)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68CC3474)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x68CC3474)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68CC3424)
+I (../Core/Inc/FreeRTOSConfig.h)(0x68D10B64)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x68CC3424)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x68CC3424)
+I (../Core/Inc/adc.h)(0x68CD2184)
+I (../Core/Inc/dma.h)(0x68D7D81D)
+I (../Core/Inc/tim.h)(0x68D7D81D)
+F (..\APP\wave_processing.c)(0x68D7D391)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\wave_processing.o --omf_browse oscilloscope\wave_processing.crf --depend oscilloscope\wave_processing.d)
+I (..\APP\wave_processing.h)(0x68D7D372)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\math.h)(0x5CEB79D6)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\string.h)(0x5CEB79E2)
+I (../Middlewares/ST/ARM/DSP/Inc/arm_math.h)(0x67A8062D)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x68CC3475)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x68CC3475)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\float.h)(0x5CEB79E2)
+I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\limits.h)(0x5CEB79D6)
+F (..\APP\waveform_task.c)(0x68D7DD82)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\waveform_task.o --omf_browse oscilloscope\waveform_task.crf --depend oscilloscope\waveform_task.d)
+F (..\GUI\oscilloscope.c)(0x68D7D895)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\oscilloscope.o --omf_browse oscilloscope\oscilloscope.crf --depend oscilloscope\oscilloscope.d)
 I (../Middlewares/LVGL/GUI/lvgl/lvgl.h)(0x66C69284)
 I (../Middlewares/LVGL/GUI/lvgl/src/misc/lv_log.h)(0x66C69284)
 I (../Middlewares/LVGL/GUI/lvgl/src/misc/../lv_conf_internal.h)(0x66C69284)
@@ -12866,12 +12970,6 @@ I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\math.h)(0x5CEB79D6)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\float.h)(0x5CEB79E2)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\limits.h)(0x5CEB79D6)
 I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
-I (..\GUI\oscilloscope.h)(0x68D7CA6C)
-I (..\GUI\wave_processing.h)(0x68D7CA6C)
-F (..\GUI\wave_processing.c)(0x68D7CA6C)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I D:/H -I ../Middlewares/LVGL/GUI/lvgl -I ../Middlewares/LVGL/GUI/lvgl/src -I ../Middlewares/LVGL/GUI/lvgl/examples/porting -I ../Middlewares/LVGL/GUI_APP/demos -I ../Middlewares/LVGL/GUI_APP/demos/stress -I ../Middlewares/LVGL/GUI -I ../Middlewares -I ../APP -I ../GUI -I ../Middlewares/ST/ARM/DSP/Inc-I.\RTE\_oscilloscope-ID:\IDE\keil5\keil5MDK\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\IDE\keil5\keil5MDK\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4-o oscilloscope\wave_processing.o --omf_browse oscilloscope\wave_processing.crf --depend oscilloscope\wave_processing.d)
-I (..\GUI\wave_processing.h)(0x68D7CA6C)
-I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
-I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\math.h)(0x5CEB79D6)
-I (D:\IDE\keil5\keil5MDK\ARM\ARMCC\include\string.h)(0x5CEB79E2)
+I (..\GUI\oscilloscope.h)(0x68D7D320)
+I (../APP/wave_processing.h)(0x68D7D372)
 F (../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4lf_math.lib)(0x67A8062D)()

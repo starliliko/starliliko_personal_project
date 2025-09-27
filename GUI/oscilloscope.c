@@ -16,17 +16,17 @@ static int16_t wave1_buffer[BUFFER_SIZE], wave2_buffer[BUFFER_SIZE];  // 绘制�
 static float ch1_current_v, ch1_freq;  // 表格显示的测量值（电压、频率）
 static float ch2_current_v, ch2_freq;
 
-// 外部波形相关变量
-static float ch1_external_v[BUFFER_SIZE] = {0};       // 通道1外部输入
-static float ch2_external_v[BUFFER_SIZE] = {0};       // 通道2外部输入
-static float ch1_test_v[BUFFER_SIZE] = {0};           // 通道1测试波形
-static float ch2_test_v[BUFFER_SIZE] = {0};           // 通道2测试波形
+//// 外部波形相关变量
+//static float ch1_external_v[BUFFER_SIZE] = {0};       // 通道1外部输入
+//static float ch2_external_v[BUFFER_SIZE] = {0};       // 通道2外部输入
+//static float ch1_test_v[BUFFER_SIZE] = {0};           // 通道1测试波形
+//static float ch2_test_v[BUFFER_SIZE] = {0};           // 通道2测试波形
 
 // 测量参数存储
-static float ch1_max_v, ch1_min_v, ch1_avg_v, ch1_rms_v;
-static float ch2_max_v, ch2_min_v, ch2_avg_v, ch2_rms_v;
-static float ch1_freq, ch2_freq;
-static wave_type_t ch1_type, ch2_type;
+//static float ch1_max_v, ch1_min_v, ch1_avg_v, ch1_rms_v;
+//static float ch2_max_v, ch2_min_v, ch2_avg_v, ch2_rms_v;
+//static float ch1_freq, ch2_freq;
+//static wave_type_t ch1_type, ch2_type;
 
 /* 函数原型声明 */
 static void generate_sine_wave(float target_freq, float amp, float sample_interval, float *v_buf, uint16_t buf_len);
@@ -211,11 +211,11 @@ static void update_measurement_table(void) {
     lv_table_set_cell_value(measurement_table, 2, 2, ch2_freq_str);
 
     // 波形类型行
-    const char *ch1_type_str = (ch1_mode == WAVE_MODE_TEST) ? CH1_TEST_TYPE : "External";
-    const char *ch2_type_str = (ch2_mode == WAVE_MODE_TEST) ? CH2_TEST_TYPE : "External";
+//    const char *ch1_type_str = (ch1_mode == WAVE_MODE_TEST) ? CH1_TEST_TYPE : "External";
+//    const char *ch2_type_str = (ch2_mode == WAVE_MODE_TEST) ? CH2_TEST_TYPE : "External";
     lv_table_set_cell_value(measurement_table, 3, 0, "Wave Type");
-    lv_table_set_cell_value(measurement_table, 3, 1, ch1_type_str);
-    lv_table_set_cell_value(measurement_table, 3, 2, ch2_type_str);
+//    lv_table_set_cell_value(measurement_table, 3, 1, ch1_type_str);
+//    lv_table_set_cell_value(measurement_table, 3, 2, ch2_type_str);
 }
 
 /* 刷新定时器回调 */

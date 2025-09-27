@@ -1,5 +1,5 @@
 #include "wave_processing.h"
-
+#include "arm_math.h"
 /**
  * 计算波形频率
  */

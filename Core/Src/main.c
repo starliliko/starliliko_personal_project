@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "adc.h"
+#include "dma.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -34,7 +35,7 @@
 #include "./SYSTEM/sys/sys.h"
 #include "oscilloscope.h"
 #include "lvgl_task.h"
-
+#include "adc_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,6 +72,7 @@ void gobal_init(void)
 {
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_TIM_Base_Start_IT(&htim7);
+    HAL_TIM_Base_Start_IT(&htim2);
     sram_init();
     // my_mem_init(SRAMIN);
     // my_mem_init(SRAMEX);
@@ -107,14 +109,17 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC1_Init();
   MX_FSMC_Init();
   MX_TIM8_Init();
   MX_TIM6_Init();
   MX_USART1_Init();
   MX_TIM7_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-    gobal_init();
+  gobal_init();
+  ADC_Collection_Init();
   /* USER CODE END 2 */
 
   /* Init scheduler */

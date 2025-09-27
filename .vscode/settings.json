@@ -15,6 +15,9 @@
         "stdbool.h": "c",
         "oscilloscope.h": "c",
         "wave_processing.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "adc_task.h": "c",
+        "dma.h": "c",
+        "cmsis_os.h": "c"
     }
 }
