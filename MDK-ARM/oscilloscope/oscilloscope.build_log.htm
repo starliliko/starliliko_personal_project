@@ -22,25 +22,41 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 D:\H\MDK-ARM\oscilloscope.uvprojx
-Project File Date:  09/26/2025
+Project File Date:  09/27/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin'
 Build target 'oscilloscope'
-compiling oscilloscope.c...
-..\GUI\oscilloscope.c(61): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          float sample_interval = (TIME_DIV * 1e-3f * GRID_X_COUNT) / buf_len;  // 采样间隔（秒�?
-..\GUI\oscilloscope.c(83): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;  // 总显示时间：0.8ms = 0.0008s
-..\GUI\oscilloscope.c(111): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          float ch2_v = (ch2_phase < M_PI) ? ch2_amp : -ch2_amp;
-..\GUI\oscilloscope.c(341): warning:  #1-D: last line of file ends without a newline
+compiling lvgl_task.c...
+..\APP\lvgl_task.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif // LVGL_TASK_H
+../GUI/oscilloscope.h(44): warning:  #1-D: last line of file ends without a newline
+  #endif // OSCILLOSCOPE_H
+..\APP\lvgl_task.c(29): warning:  #1-D: last line of file ends without a newline
   }
-..\GUI\oscilloscope.c: 4 warnings, 0 errors
+..\APP\lvgl_task.c: 3 warnings, 0 errors
+compiling oscilloscope.c...
+..\GUI\oscilloscope.h(44): warning:  #1-D: last line of file ends without a newline
+  #endif // OSCILLOSCOPE_H
+..\GUI\oscilloscope.c(57): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          float sample_interval = (TIME_DIV * 1e-3f * GRID_X_COUNT) / buf_len;  // 采样间隔（秒�?
+..\GUI\oscilloscope.c(113): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          v_buf[i] = (phase < M_PI) ? amp : -amp;
+..\GUI\oscilloscope.c(129): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;  // 总显示时间：0.8ms
+..\GUI\oscilloscope.c(405): warning:  #1-D: last line of file ends without a newline
+  }
+..\GUI\oscilloscope.c: 5 warnings, 0 errors
+compiling main.c...
+../GUI/oscilloscope.h(44): warning:  #1-D: last line of file ends without a newline
+  #endif // OSCILLOSCOPE_H
+../APP/lvgl_task.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif // LVGL_TASK_H
+../Core/Src/main.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=188088 RO-data=31312 RW-data=784 ZI-data=80856  
+Program Size: Code=188736 RO-data=31296 RW-data=772 ZI-data=97244  
 FromELF: creating hex file...
-"oscilloscope\oscilloscope.axf" - 0 Error(s), 4 Warning(s).
+"oscilloscope\oscilloscope.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -63,7 +79,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

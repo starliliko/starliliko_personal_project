@@ -3,42 +3,38 @@
 #include <math.h>
 #include <time.h>
 #include <stdio.h>
+#include <string.h>  
+#include "oscilloscope.h"  
 
-#define M_PI 3.14159265358979323846
-/* 核心配置：适配320x240小屏幕 */
-#define SCOPE_WIDTH     320     // 屏幕宽度
-#define SCOPE_HEIGHT    240     // 屏幕高度
-#define TABLE_HEIGHT    75      // 表格总高度（4行×16px + 边框）
-#define WAVE_HEIGHT     (SCOPE_HEIGHT - TABLE_HEIGHT)  // 波形区高度
-
-/* 其他参数 */
-#define GRID_X_COUNT    10      
-#define GRID_Y_COUNT    8       
-#define BUFFER_SIZE     1024     
-#define TIME_DIV        0.01     // 时基：0.01ms/格（总显示时间=0.1ms×8=0.8ms）
-#define TRIGGER_LEVEL   0        // 触发电平：0V
-
-//显示频率10-30K
-/* 电压参数 - 明确每格0.5V */
-#define V_PER_DIV       0.5f    // 每格电压：0.5V（核心参数，用于Y轴标识）
-#define V_RANGE         4.0f    // 总电压范围：4V（-2V ~ +2V）
-#define PIXELS_PER_VOLT (WAVE_HEIGHT / V_RANGE)  // 像素/伏换算
 
 /* 全局变量 */
 static lv_obj_t *scope_canvas;
 static lv_obj_t *measurement_table;
 
-// 通道参数（仅保留必要变量，新增【目标频率】变量用于调频率）
-static int16_t wave1_buffer[BUFFER_SIZE], wave2_buffer[BUFFER_SIZE];
-static float ch1_current_v, ch1_freq;  // 测量值（当前电压）、实际频率
+// 通道参数
+static int16_t wave1_buffer[BUFFER_SIZE], wave2_buffer[BUFFER_SIZE];  // 最终绘制用缓冲区（像素偏移）
+static float ch1_current_v, ch1_freq;  // 测量值（当前电压、频率）
 static float ch2_current_v, ch2_freq;
-static const char *ch1_wave_type = "Sine";   // 波形类型
-static const char *ch2_wave_type = "Square";
-// 新增：频率调节变量（外部可修改此变量来调整波形频率，范围建议1Hz~160kHz）
-static float ch1_target_freq = 150*1000.0f;  // 通道1默认目标频率：1kHz
-static float ch2_target_freq = 150*1000.0f;   // 通道2默认目标频率：800Hz
 
-/* 频率计算：基于上升沿过零点检测 */
+//外部波形相关变量
+static wave_display_mode_t ch1_mode = WAVE_MODE_TEST;  // 通道1显示模式（默认测试）
+static wave_display_mode_t ch2_mode = WAVE_MODE_TEST;  // 通道2显示模式（默认测试）
+static float ch1_external_v[BUFFER_SIZE] = {0};       // 通道1外部输入电压缓冲区
+static float ch2_external_v[BUFFER_SIZE] = {0};       // 通道2外部输入电压缓冲区
+
+
+/* 函数原型声明（确保编译顺序正确） */
+static void generate_sine_wave(float target_freq, float amp, float sample_interval, float *v_buf, uint16_t buf_len);
+static void generate_square_wave(float target_freq, float amp, float sample_interval, float *v_buf, uint16_t buf_len);
+static void generate_waveforms(void);
+static float calculate_frequency(int16_t *wave_buf, uint16_t buf_len);
+static void calculate_all_measurements(void);
+static void draw_scope_background(lv_event_t *e);
+static void draw_waveforms(lv_event_t *e);
+static void update_measurement_table(void);
+static void refresh_scope(lv_timer_t *timer);
+
+/* 频率计算：基于上升沿过零点检测（对测试/外部波形通用） */
 static float calculate_frequency(int16_t *wave_buf, uint16_t buf_len) {
     float freq = 0.0f;
     uint16_t zero_cross_cnt = 0;
@@ -66,7 +62,7 @@ static float calculate_frequency(int16_t *wave_buf, uint16_t buf_len) {
     return freq;
 }
 
-/* 计算测量参数：仅保留当前电压和频率 */
+/* 计算测量参数：仅保留当前电压和频率（对测试/外部波形通用） */
 static void calculate_all_measurements(void) {
     // 通道1：当前电压（最后一个采样点）+ 频率
     ch1_current_v = (float)wave1_buffer[BUFFER_SIZE-1] / PIXELS_PER_VOLT;
@@ -77,48 +73,108 @@ static void calculate_all_measurements(void) {
     ch2_freq = calculate_frequency(wave2_buffer, BUFFER_SIZE);
 }
 
-/* 生成测试波形：【频率可调版】通道1正弦波，通道2方波 */
-static void generate_test_waves(void) {
-    // 1. 计算核心参数：总显示时间、采样间隔（固定，由TIME_DIV和BUFFER_SIZE决定）
-    const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;  // 总显示时间：0.8ms = 0.0008s
-    const float sample_interval = total_display_time / BUFFER_SIZE;    // 单个采样点间隔：0.0008s/256 ≈ 3.125μs
+/* -------------------------- 独立测试波形生成函数 -------------------------- */
+/**
+ * 生成正弦波（电压值）
+ * @param target_freq 目标频率（Hz）
+ * @param amp         波形幅度（V）
+ * @param sample_interval 采样间隔（秒）
+ * @param v_buf       输出电压缓冲区（长度=buf_len）
+ * @param buf_len     缓冲区长度
+ */
+static void generate_sine_wave(float target_freq, float amp, float sample_interval, float *v_buf, uint16_t buf_len) {
+    static float phase = 0.0f;  // 静态相位：确保波形连续移动
+    float phase_step = 2 * M_PI * target_freq * sample_interval;  // 每个采样点的相位增量
 
-    // 2. 计算相位步进（根据目标频率动态调整，核心是“每个采样点的相位增量”）
-    // 相位步进 = 2π * 目标频率 * 采样间隔（确保一个周期内的采样点数量正确）
-    const float ch1_phase_step = 2 * M_PI * ch1_target_freq * sample_interval;
-    const float ch2_phase_step = 2 * M_PI * ch2_target_freq * sample_interval;
-
-    // 3. 静态相位变量（确保波形连续移动，不重置）
-    static float ch1_phase = 0.0f;
-    static float ch2_phase = 0.0f;
-
-    // 4. 通道1：可调频率正弦波（幅度1.5V，避免超出-2V~+2V范围）
-    const float ch1_amp = 1.5f;  // 正弦波幅度
-    for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
-        float ch1_v = ch1_amp * sin(ch1_phase);  // 基于动态相位生成正弦波
-        wave1_buffer[i] = (int16_t)(ch1_v * PIXELS_PER_VOLT);  // 转换为像素偏移
-        // 相位累加（超过2π后重置，避免数值溢出）
-        ch1_phase += ch1_phase_step;
-        if (ch1_phase >= 2 * M_PI) {
-            ch1_phase -= 2 * M_PI;
-        }
-    }
-
-
-    // 5. 通道2：可调频率方波（幅度1.2V，占空比50%）
-    const float ch2_amp = 1.2f;  // 方波幅度
-    for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
-        // 相位在0~π时为高电平，π~2π时为低电平（占空比50%）
-        float ch2_v = (ch2_phase < M_PI) ? ch2_amp : -ch2_amp;
-        wave2_buffer[i] = (int16_t)(ch2_v * PIXELS_PER_VOLT);  // 转换为像素偏移
-        // 相位累加（超过2π后重置）
-        ch2_phase += ch2_phase_step;
-        if (ch2_phase >= 2 * M_PI) {
-            ch2_phase -= 2 * M_PI;
+    for (uint16_t i = 0; i < buf_len; i++) {
+        v_buf[i] = amp * sin(phase);  // 生成正弦电压值
+        // 相位累加（超过2π重置，避免数值溢出）
+        phase += phase_step;
+        if (phase >= 2 * M_PI) {
+            phase -= 2 * M_PI;
         }
     }
 }
 
+/**
+ * 生成方波（电压值）
+ * @param target_freq 目标频率（Hz）
+ * @param amp         波形幅度（V）
+ * @param sample_interval 采样间隔（秒）
+ * @param v_buf       输出电压缓冲区（长度=buf_len）
+ * @param buf_len     缓冲区长度
+ */
+static void generate_square_wave(float target_freq, float amp, float sample_interval, float *v_buf, uint16_t buf_len) {
+    static float phase = 0.0f;  // 静态相位：确保波形连续移动
+    float phase_step = 2 * M_PI * target_freq * sample_interval;  // 每个采样点的相位增量
+
+    for (uint16_t i = 0; i < buf_len; i++) {
+        // 占空比50%：相位0~π为高电平，π~2π为低电平
+        v_buf[i] = (phase < M_PI) ? amp : -amp;
+        // 相位累加（超过2π重置）
+        phase += phase_step;
+        if (phase >= 2 * M_PI) {
+            phase -= 2 * M_PI;
+        }
+    }
+}
+
+/* -------------------------- 波形数据统一处理函数 -------------------------- */
+/**
+ * 生成/更新波形数据（根据模式自动处理测试波形或外部波形）
+ * 最终将数据转换为像素偏移存入 wave1_buffer / wave2_buffer
+ */
+static void generate_waveforms(void) {
+    // 核心参数：总显示时间、采样间隔（固定，由时基和缓冲区长度决定）
+    const float total_display_time = TIME_DIV * 1e-3f * GRID_X_COUNT;  // 总显示时间：0.8ms
+    const float sample_interval = total_display_time / BUFFER_SIZE;    // 单个采样点间隔：~781ns（1024点）
+
+    // 临时缓冲区：存储测试波形的电压值
+    static float ch1_test_v[BUFFER_SIZE] = {0};
+    static float ch2_test_v[BUFFER_SIZE] = {0};
+
+    /* ------------------- 通道1波形处理 ------------------- */
+    switch (ch1_mode) {
+        case WAVE_MODE_TEST:
+            // 生成正弦波测试信号（幅度1.5V，避免超出-2V~+2V范围）
+            generate_sine_wave(CH1_TEST_FREQ, CH1_TEST_AMP, sample_interval, ch1_test_v, BUFFER_SIZE);
+            // 电压值 → 像素偏移（存入绘制缓冲区）
+            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
+                wave1_buffer[i] = (int16_t)(ch1_test_v[i] * PIXELS_PER_VOLT);
+            }
+            break;
+
+        case WAVE_MODE_EXTERNAL:
+            // 外部输入电压值 → 像素偏移（限制电压范围在-2V~+2V，避免超出屏幕）
+            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
+                float clamped_v = fminf(fmaxf(ch1_external_v[i], -2.0f), 2.0f);
+                wave1_buffer[i] = (int16_t)(clamped_v * PIXELS_PER_VOLT);
+            }
+            break;
+    }
+
+    /* ------------------- 通道2波形处理 ------------------- */
+    switch (ch2_mode) {
+        case WAVE_MODE_TEST:
+            // 生成方波测试信号（幅度1.2V）
+            generate_square_wave(CH2_TEST_FREQ, CH2_TEST_AMP, sample_interval, ch2_test_v, BUFFER_SIZE);
+            // 电压值 → 像素偏移（存入绘制缓冲区）
+            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
+                wave2_buffer[i] = (int16_t)(ch2_test_v[i] * PIXELS_PER_VOLT);
+            }
+            break;
+
+        case WAVE_MODE_EXTERNAL:
+            // 外部输入电压值 → 像素偏移（限制电压范围）
+            for (uint16_t i = 0; i < BUFFER_SIZE; i++) {
+                float clamped_v = fminf(fmaxf(ch2_external_v[i], -2.0f), 2.0f);
+                wave2_buffer[i] = (int16_t)(clamped_v * PIXELS_PER_VOLT);
+            }
+            break;
+    }
+}
+
+/* -------------------------- 示波器绘制函数 -------------------------- */
 /* 绘制背景、网格、坐标轴 + Y轴0.5V/div标识 */
 static void draw_scope_background(lv_event_t *e) {
     lv_obj_draw_part_dsc_t *dsc = lv_event_get_draw_part_dsc(e);
@@ -166,18 +222,17 @@ static void draw_scope_background(lv_event_t *e) {
     x_line[0].x = x_line[1].x = dsc->draw_area->x1 + 30;  // 与波形绘制起始位置对齐
     lv_draw_line(dsc->draw_ctx, &line_dsc, &x_line[0], &x_line[1]);
 
-    // 4. 新增：Y轴0.5V/div单位标识（左上角，白色文字）
+    // 4. Y轴0.5V/div单位标识（左上角，白色文字）
     lv_draw_label_dsc_t label_dsc;
     lv_draw_label_dsc_init(&label_dsc);
     label_dsc.color = lv_color_hex(0xFFFFFF);  // 白色文字
     label_dsc.font = LV_FONT_DEFAULT;          // 默认字体
     label_dsc.align = LV_TEXT_ALIGN_LEFT;      // 左对齐
 
-    // 标识位置：左上角（波形区左上角，x偏移10px，y偏移10px）
     lv_area_t y_unit_area = {
         .x1 = dsc->draw_area->x1 + 10,
         .y1 = dsc->draw_area->y1 + 10,
-        .x2 = dsc->draw_area->x1 + 80,  // 足够显示"Y: 0.5V/div"
+        .x2 = dsc->draw_area->x1 + 80,
         .y2 = dsc->draw_area->y1 + 30
     };
     lv_draw_label(dsc->draw_ctx, &label_dsc, &y_unit_area, "0.5V", NULL);
@@ -190,7 +245,7 @@ static void draw_scope_background(lv_event_t *e) {
     lv_draw_line(dsc->draw_ctx, &line_dsc, &y_line[0], &y_line[1]);
 }
 
-/* 绘制双通道波形：通道1青色，通道2黄色 */
+/* 绘制双通道波形：通道1青色，通道2黄色（复用原逻辑，数据来源统一） */
 static void draw_waveforms(lv_event_t *e) {
     lv_obj_draw_part_dsc_t *dsc = lv_event_get_draw_part_dsc(e);
     if (dsc->part != LV_PART_MAIN) return;
@@ -237,29 +292,25 @@ static void draw_waveforms(lv_event_t *e) {
     }
 }
 
-/* 更新表格：仅保留测量值、频率、波形类型 */
+/* 更新表格：根据显示模式自动更新波形类型 */
 static void update_measurement_table(void) {
     // 1. 设置表格行列数（4行：标题行+3个参数行；3列：参数名+CH1+CH2）
     lv_table_set_row_cnt(measurement_table, 4);
     lv_table_set_col_cnt(measurement_table, 3);
 
     // 2. 表格样式设置（高对比度，适配小屏幕）
-    // 表格背景（黑色）+ 单元格背景（深灰色）
     lv_obj_set_style_bg_color(measurement_table, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_bg_color(measurement_table, lv_color_hex(0x222222), LV_PART_ITEMS);
-    // 文字（白色）+ 边框（灰色）
     lv_obj_set_style_text_color(measurement_table, lv_color_hex(0xFFFFFF), LV_PART_ITEMS);
     lv_obj_set_style_border_color(measurement_table, lv_color_hex(0x666666), LV_PART_ITEMS);
     lv_obj_set_style_border_width(measurement_table, 1, LV_PART_ITEMS);
-    // 行高（16px）+ 内边距（1px），确保文字不溢出
     lv_obj_set_style_height(measurement_table, 16, LV_PART_ITEMS);
     lv_obj_set_style_pad_all(measurement_table, 1, LV_PART_ITEMS);
-    // 字体（默认字体）
     lv_obj_set_style_text_font(measurement_table, LV_FONT_DEFAULT, LV_PART_ITEMS);
 
     // 3. 列宽适配（总宽度=320px，无溢出）
-    lv_table_set_col_width(measurement_table, 0, 100);   // 参数名列（足够显示"Parameter"）
-    lv_table_set_col_width(measurement_table, 1, 120);  // CH1列（足够显示"1.23V"）
+    lv_table_set_col_width(measurement_table, 0, 100);   // 参数名列
+    lv_table_set_col_width(measurement_table, 1, 120);  // CH1列
     lv_table_set_col_width(measurement_table, 2, 120);  // CH2列
 
     // 4. 表格内容填充
@@ -284,15 +335,17 @@ static void update_measurement_table(void) {
     lv_table_set_cell_value(measurement_table, 2, 1, ch1_freq_str);
     lv_table_set_cell_value(measurement_table, 2, 2, ch2_freq_str);
 
-    // 波形类型行
+    // 波形类型行（根据显示模式更新）
+    const char *ch1_type_str = (ch1_mode == WAVE_MODE_TEST) ? CH1_TEST_TYPE : "External";
+    const char *ch2_type_str = (ch2_mode == WAVE_MODE_TEST) ? CH2_TEST_TYPE : "External";
     lv_table_set_cell_value(measurement_table, 3, 0, "Wave Type");
-    lv_table_set_cell_value(measurement_table, 3, 1, ch1_wave_type);
-    lv_table_set_cell_value(measurement_table, 3, 2, ch2_wave_type);
+    lv_table_set_cell_value(measurement_table, 3, 1, ch1_type_str);
+    lv_table_set_cell_value(measurement_table, 3, 2, ch2_type_str);
 }
 
 /* 刷新定时器回调：20Hz刷新（50ms周期） */
 static void refresh_scope(lv_timer_t *timer) {
-    generate_test_waves();          // 生成新波形数据
+    generate_waveforms();           // 生成/更新波形数据（测试或外部）
     calculate_all_measurements();   // 计算测量参数
     lv_obj_invalidate(scope_canvas); // 重绘画布（更新波形）
     update_measurement_table();     // 更新表格（显示新参数）
@@ -326,17 +379,27 @@ void create_oscilloscope_ui(void) {
     lv_obj_invalidate(measurement_table);
 }
 
-/* 新增：外部频率调节接口（可在其他函数中调用此接口修改频率） */
-// 调节通道1正弦波频率（范围建议1Hz~160kHz）
-void set_ch1_freq(float freq) {
-    if (freq > 0 && freq <= 160000) {  // 限制最高频率为160kHz（硬件上限）
-        ch1_target_freq = freq;
-    }
+
+
+
+/* 设置通道1显示模式（测试/外部） */
+void set_ch1_display_mode(wave_display_mode_t mode) {
+    ch1_mode = mode;
 }
 
-// 调节通道2方波频率（范围建议1Hz~160kHz）
-void set_ch2_freq(float freq) {
-    if (freq > 0 && freq <= 160000) {  // 限制最高频率为160kHz
-        ch2_target_freq = freq;
-    }
+/* 设置通道2显示模式（测试/外部） */
+void set_ch2_display_mode(wave_display_mode_t mode) {
+    ch2_mode = mode;
+}
+
+/* 设置通道1外部输入波形（传入电压值数组，长度需为BUFFER_SIZE） */
+void set_ch1_external_wave(const float *v_buf, uint16_t len) {
+    if (v_buf == NULL || len != BUFFER_SIZE) return;  // 检查参数有效性
+    memcpy(ch1_external_v, v_buf, len * sizeof(float));  // 拷贝外部数据到缓冲区
+}
+
+/* 设置通道2外部输入波形（传入电压值数组，长度需为BUFFER_SIZE） */
+void set_ch2_external_wave(const float *v_buf, uint16_t len) {
+    if (v_buf == NULL || len != BUFFER_SIZE) return;  // 检查参数有效性
+    memcpy(ch2_external_v, v_buf, len * sizeof(float));  // 拷贝外部数据到缓冲区
 }
