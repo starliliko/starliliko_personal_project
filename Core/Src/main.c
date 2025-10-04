@@ -72,7 +72,6 @@ void gobal_init(void)
 {
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_TIM_Base_Start_IT(&htim7);
-    HAL_TIM_Base_Start(&htim2);
     sram_init();
     // my_mem_init(SRAMIN);
     // my_mem_init(SRAMEX);
@@ -104,7 +103,8 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  /* Enable I-Cache, D-Cache, and Prefetch Buffer */
+  FLASH->ACR |= FLASH_ACR_ICEN | FLASH_ACR_DCEN | FLASH_ACR_PRFTEN;
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
