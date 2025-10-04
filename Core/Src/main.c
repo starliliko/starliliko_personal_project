@@ -72,7 +72,7 @@ void gobal_init(void)
 {
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_TIM_Base_Start_IT(&htim7);
-    HAL_TIM_Base_Start_IT(&htim2);
+    HAL_TIM_Base_Start(&htim2);
     sram_init();
     // my_mem_init(SRAMIN);
     // my_mem_init(SRAMEX);
@@ -119,7 +119,6 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   gobal_init();
-  ADC_Collection_Init();
   /* USER CODE END 2 */
 
   /* Init scheduler */

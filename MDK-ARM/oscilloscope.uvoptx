@@ -158,27 +158,22 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>high_water,0x0A</ItemText>
+          <ItemText>adc_ch2</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ch1_test_v,0x0A</ItemText>
+          <ItemText>adc_ch1</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ch1_current_v</ItemText>
+          <ItemText>adc_buffer_A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ch2_current_v</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>adc_buffer_A</ItemText>
+          <ItemText>adc_buffer_B</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
