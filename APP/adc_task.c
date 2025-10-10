@@ -22,7 +22,7 @@ osSemaphoreId_t adc_data_sem;
 // volatile确保编译器不会优化掉对它的访问，保证在中断和任务间可见
 volatile uint16_t *filled_buffer_ptr = NULL;
 volatile uint64_t count_buffer = 0; // 记录处理了多少个缓冲区
-
+//ces
 // 采样率相关变量
 static float current_sample_rate = 1000000.0f;  // 默认1MHz
 
