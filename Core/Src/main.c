@@ -73,6 +73,8 @@ void gobal_init(void)
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_TIM_Base_Start_IT(&htim7);
     sram_init();
+    HAL_Delay(200);
+    
     // my_mem_init(SRAMIN);
     // my_mem_init(SRAMEX);
 }
