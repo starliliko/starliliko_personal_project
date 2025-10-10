@@ -6,8 +6,6 @@
 #include "tim.h"
 
 // 硬件配置参数
-#define ADC_BUFFER_SIZE 1024                      // 单个缓冲区的大小（双通道各512点）
-#define CHANNEL_BUFFER_SIZE (ADC_BUFFER_SIZE / 2) // 单通道采样点数
 
 // 使用一个连续的双倍缓冲区，确保内存对齐优化 DMA 性能
 uint16_t adc_double_buffer[ADC_BUFFER_SIZE * 2] __attribute__((aligned(32))) = {0};
@@ -53,7 +51,7 @@ HAL_StatusTypeDef ADC_Set_Sample_Rate(float target_rate)
         tim2_clk *= 2;  // APB1预分频≠1时，定时器时钟×2
     }
 
-    // ✅ 计算最优的预分频器和周期值组合
+    //  计算最优的预分频器和周期值组合
     uint32_t best_prescaler = 0;
     uint32_t best_period = 0;
     float best_error = 1000000.0f;
@@ -91,14 +89,14 @@ HAL_StatusTypeDef ADC_Set_Sample_Rate(float target_rate)
         return HAL_ERROR;
     }
 
-    // ✅ 关键：停止ADC和定时器
+    // 关键：停止ADC和定时器
     HAL_ADC_Stop_DMA(&hadc1);
     HAL_TIM_Base_Stop(&htim2);
     
     // 短暂延时确保完全停止
     osDelay(10);
 
-    // ✅ 更新TIM2配置
+    //  更新TIM2配置
     htim2.Init.Prescaler = best_prescaler;
     htim2.Init.Period = best_period;
     htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -110,7 +108,7 @@ HAL_StatusTypeDef ADC_Set_Sample_Rate(float target_rate)
         return HAL_ERROR;
     }
 
-    // ✅ 重新配置TIM2触发输出
+    //  重新配置TIM2触发输出
     TIM_MasterConfigTypeDef sMasterConfig = {0};
     sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
     sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
@@ -120,13 +118,13 @@ HAL_StatusTypeDef ADC_Set_Sample_Rate(float target_rate)
         return HAL_ERROR;
     }
 
-    // ✅ 重新启动ADC DMA
+    //  重新启动ADC DMA
     if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_double_buffer, ADC_BUFFER_SIZE * 2) != HAL_OK)
     {
         return HAL_ERROR;
     }
 
-    // ✅ 重新启动定时器
+    //  重新启动定时器
     if (HAL_TIM_Base_Start(&htim2) != HAL_OK)
     {
         return HAL_ERROR;
@@ -215,13 +213,8 @@ static void ADC_Collection_Init(void)
     }
 
     // 设置采样率
-    status = ADC_Set_Sample_Rate(2000000.0f); // 设置采样率为2MHz
+    status = ADC_Set_Sample_Rate(600000.0f); // 600kHz采样率
 
-    // // 启动ADC的DMA传输
-    // HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_double_buffer, ADC_BUFFER_SIZE * 2);
-
-    //  // 启动TIM2触发ADC采样
-    //  HAL_TIM_Base_Start(&htim2);
 }
 
 /**

@@ -21,6 +21,7 @@
         "cmsis_os.h": "c",
         "lvgl.h": "c",
         "waveform_task.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "arm_const_structs.h": "c"
     }
 }

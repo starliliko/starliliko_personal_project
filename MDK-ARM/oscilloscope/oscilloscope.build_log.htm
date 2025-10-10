@@ -30,13 +30,33 @@ Build target 'oscilloscope'
 compiling adc_task.c...
 ..\APP\adc_task.h(28): warning:  #1-D: last line of file ends without a newline
   #endif /* __ADC_TASK_H */
-..\APP\adc_task.c(73): warning:  #223-D: function "fabs" declared implicitly
+..\APP\adc_task.c(71): warning:  #223-D: function "fabs" declared implicitly
           float error = fabs(calc_rate - target_rate);
 ..\APP\adc_task.c: 2 warnings, 0 errors
+compiling main.c...
+../GUI/oscilloscope.h(26): warning:  #1-D: last line of file ends without a newline
+  #endif // OSCILLOSCOPE_H
+../APP/lvgl_task.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif // LVGL_TASK_H
+../APP/adc_task.h(28): warning:  #1-D: last line of file ends without a newline
+  #endif /* __ADC_TASK_H */
+../Core/Src/main.c: 3 warnings, 0 errors
+compiling waveform_task.c...
+..\APP\waveform_task.h(16): warning:  #47-D: incompatible redefinition of macro "TRIGGER_RISING"  (declared at line 270 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h")
+  #define TRIGGER_RISING  0
+..\APP\waveform_task.h(17): warning:  #47-D: incompatible redefinition of macro "TRIGGER_FALLING"  (declared at line 271 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h")
+  #define TRIGGER_FALLING 1
+..\APP\waveform_task.h(68): warning:  #1-D: last line of file ends without a newline
+  #endif /* __WAVEFORM_TASK_H */
+..\APP\adc_task.h(28): warning:  #1-D: last line of file ends without a newline
+  #endif /* __ADC_TASK_H */
+..\APP\waveform_task.c(237): warning:  #1-D: last line of file ends without a newline
+  }
+..\APP\waveform_task.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=190700 RO-data=31204 RW-data=828 ZI-data=93412  
+Program Size: Code=187136 RO-data=31008 RW-data=832 ZI-data=92776  
 FromELF: creating hex file...
-"oscilloscope\oscilloscope.axf" - 0 Error(s), 2 Warning(s).
+"oscilloscope\oscilloscope.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -59,7 +79,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>
