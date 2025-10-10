@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>  
 #include "oscilloscope.h"  
-#include "wave_processing.h"  
+
 
 
 /* 全局变量 */

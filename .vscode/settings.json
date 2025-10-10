@@ -18,6 +18,9 @@
         "string.h": "c",
         "adc_task.h": "c",
         "dma.h": "c",
-        "cmsis_os.h": "c"
+        "cmsis_os.h": "c",
+        "lvgl.h": "c",
+        "waveform_task.h": "c",
+        "main.h": "c"
     }
 }

@@ -1661,11 +1661,6 @@
               <FilePath>..\APP\adc_task.c</FilePath>
             </File>
             <File>
-              <FileName>wave_processing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\APP\wave_processing.c</FilePath>
-            </File>
-            <File>
               <FileName>waveform_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\APP\waveform_task.c</FilePath>
@@ -1681,9 +1676,6 @@
               <FilePath>..\GUI\oscilloscope.c</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
           <GroupName>Middlewares/Library/DSP Library/DSP Library</GroupName>
@@ -1782,6 +1774,9 @@
               </FileOption>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>

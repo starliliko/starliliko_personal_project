@@ -214,7 +214,6 @@
 "oscilloscope\lv_font_montserrat_28_compr_az.o"
 "oscilloscope\lvgl_task.o"
 "oscilloscope\adc_task.o"
-"oscilloscope\wave_processing.o"
 "oscilloscope\waveform_task.o"
 "oscilloscope\oscilloscope.o"
 "../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4lf_math.lib"
