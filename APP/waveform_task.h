@@ -4,42 +4,45 @@
 #include "main.h"
 
 // 波形缓冲区大小（与ADC一致）
-#define WAVEFORM_BUFFER_SIZE 512
+#define WAVEFORM_BUFFER_SIZE 1024
 
 // 触发模式定义
-#define TRIGGER_AUTO    0
-#define TRIGGER_NORMAL  1
-#define TRIGGER_SINGLE  2
-#define TRIGGER_STOP    0xFF
+#define TRIGGER_AUTO 0
+#define TRIGGER_NORMAL 1
+#define TRIGGER_SINGLE 2
+#define TRIGGER_STOP 0xFF
 
 // 触发边沿定义
-#define TRIGGER_RISING  0
+#define TRIGGER_RISING 0
 #define TRIGGER_FALLING 1
 
 // 波形测量参数结构（仅保留电压相关）
-typedef struct {
-    float frequency;          // 频率 (Hz)
-    float period;             // 周期 (s)
-    float amplitude;          // 峰峰值 (V)
-    float max_voltage;        // 最大电压 (V)
-    float min_voltage;        // 最小电压 (V)
-    float avg_voltage;        // 平均电压 (V)
-    float rms_voltage;        // 有效值电压 (V)
-    float duty_cycle;         // 占空比 (%)
+typedef struct
+{
+    float frequency;   // 频率 (Hz)
+    float period;      // 周期 (s)
+    float amplitude;   // 峰峰值 (V)
+    float max_voltage; // 最大电压 (V)
+    float min_voltage; // 最小电压 (V)
+    float avg_voltage; // 平均电压 (V)
+    float rms_voltage; // 有效值电压 (V)
+    float duty_cycle;  // 占空比 (%)
 } wave_params_t;
 
 // 波形显示配置
-typedef struct {
-    float v_scale;            // 电压刻度
-    float t_scale;            // 时间刻度
-    uint8_t trigger_mode;     // 触发模式
-    float trigger_level;      // 触发电平
-    uint8_t trigger_edge;     // 触发边沿
-    uint8_t channel_enable;   // 通道使能
+typedef struct
+{
+    float v_scale;          // 电压刻度
+    float t_scale;          // 时间刻度
+    uint8_t trigger_mode;   // 触发模式
+    float trigger_level;    // 触发电平
+    uint8_t trigger_edge;   // 触发边沿
+    uint8_t channel_enable; // 通道使能
 } waveform_config_t;
 
 // 波形数据结构
-typedef struct {
+typedef struct
+{
     float ch1_data[WAVEFORM_BUFFER_SIZE];
     float ch2_data[WAVEFORM_BUFFER_SIZE];
     wave_params_t ch1_params;
@@ -62,7 +65,7 @@ void waveform_set_trigger(uint8_t mode, float level, uint8_t edge);
 void waveform_enable_channel(uint8_t channel, uint8_t enable);
 
 // 数据访问函数
-waveform_data_t* waveform_get_data(void);
-waveform_config_t* waveform_get_config(void);
+waveform_data_t *waveform_get_data(void);
+waveform_config_t *waveform_get_config(void);
 
 #endif /* __WAVEFORM_TASK_H */
