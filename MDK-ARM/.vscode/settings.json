@@ -6,5 +6,6 @@
         "lvgl.h": "c",
         "oscilloscope.h": "c",
         "main.h": "c"
-    }
+    },
+    "idf.pythonInstallPath": "d:\\IDE\\tools\\tools\\idf-python\\3.11.2\\python.exe"
 }

@@ -18,8 +18,8 @@ void lvgl_init(void)
 
 void lvgl_task(void *argument)
 {
-    lvgl_init();      /* lvgl³õÊ¼»¯ */
-    //lv_demo_stress(); /* ?????demo */
+    lvgl_init(); /* lvglï¿½ï¿½Ê¼ï¿½ï¿½ */
+    // lv_demo_stress(); /* ?????demo */
     create_oscilloscope_ui();
     while (1)
     {

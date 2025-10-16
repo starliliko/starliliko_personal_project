@@ -22,25 +22,23 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 D:\H\MDK-ARM\oscilloscope.uvprojx
-Project File Date:  10/12/2025
+Project File Date:  10/16/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\IDE\keil5\keil5MDK\ARM\ARMCC\Bin'
 Build target 'oscilloscope'
-compiling oscilloscope.c...
-../APP/waveform_task.h(16): warning:  #47-D: incompatible redefinition of macro "TRIGGER_RISING"  (declared at line 270 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h")
-  #define TRIGGER_RISING 0
-../APP/waveform_task.h(17): warning:  #47-D: incompatible redefinition of macro "TRIGGER_FALLING"  (declared at line 271 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h")
-  #define TRIGGER_FALLING 1
-../APP/waveform_task.h(71): warning:  #1-D: last line of file ends without a newline
+compiling waveform_task.c...
+..\APP\waveform_task.h(84): warning:  #1-D: last line of file ends without a newline
   #endif /* __WAVEFORM_TASK_H */
-../APP/adc_task.h(22): warning:  #1-D: last line of file ends without a newline
+..\APP\adc_task.h(22): warning:  #1-D: last line of file ends without a newline
   #endif /* __ADC_TASK_H */
-..\GUI\oscilloscope.c: 4 warnings, 0 errors
+..\APP\waveform_task.c(525): warning:  #177-D: function "calculate_frequency_zero_cross"  was declared but never referenced
+  static float calculate_frequency_zero_cross(float *data, uint16_t len, float sample_rate)
+..\APP\waveform_task.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=192032 RO-data=150952 RW-data=840 ZI-data=117400  
+Program Size: Code=193880 RO-data=153060 RW-data=840 ZI-data=121480  
 FromELF: creating hex file...
-"oscilloscope\oscilloscope.axf" - 0 Error(s), 4 Warning(s).
+"oscilloscope\oscilloscope.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 

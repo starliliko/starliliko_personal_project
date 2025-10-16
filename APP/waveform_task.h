@@ -12,21 +12,34 @@
 #define TRIGGER_SINGLE 2
 #define TRIGGER_STOP 0xFF
 
-// 触发边沿定义
-#define TRIGGER_RISING 0
-#define TRIGGER_FALLING 1
+// ✅ 修复: 避免与HAL库冲突,使用不同的名称
+#define WAVE_TRIGGER_RISING 0
+#define WAVE_TRIGGER_FALLING 1
+
+// 波形类型定义
+typedef enum
+{
+    WAVE_TYPE_UNKNOWN = 0, // 未知波形
+    WAVE_TYPE_SINE,        // 正弦波
+    WAVE_TYPE_SQUARE,      // 方波
+    WAVE_TYPE_TRIANGLE,    // 三角波
+    WAVE_TYPE_SAWTOOTH,    // 锯齿波
+    WAVE_TYPE_DC,          // 直流
+    WAVE_TYPE_NOISE        // 噪声
+} wave_type_t;
 
 // 波形测量参数结构（仅保留电压相关）
 typedef struct
 {
-    float frequency;   // 频率 (Hz)
-    float period;      // 周期 (s)
-    float amplitude;   // 峰峰值 (V)
-    float max_voltage; // 最大电压 (V)
-    float min_voltage; // 最小电压 (V)
-    float avg_voltage; // 平均电压 (V)
-    float rms_voltage; // 有效值电压 (V)
-    float duty_cycle;  // 占空比 (%)
+    float frequency;       // 频率 (Hz)
+    float period;          // 周期 (s)
+    float amplitude;       // 峰峰值 (V)
+    float max_voltage;     // 最大电压 (V)
+    float min_voltage;     // 最小电压 (V)
+    float avg_voltage;     // 平均电压 (V)
+    float rms_voltage;     // 有效值电压 (V)
+    float duty_cycle;      // 占空比 (%)
+    wave_type_t wave_type; // 波形类型
 } wave_params_t;
 
 // 波形显示配置

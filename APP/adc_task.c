@@ -162,17 +162,33 @@ static void ADC_Separate_Channels(uint16_t *src, uint16_t *ch1, uint16_t *ch2)
  */
 static void ADC_Collection_Init(void)
 {
-    // 创建二进制信号量
     adc_data_sem = osSemaphoreNew(1, 0, NULL);
-
     if (adc_data_sem == NULL)
     {
         Error_Handler();
     }
 
-    // ✅ 修改: 提高采样率支持500kHz信号 (奈奎斯特定理: fs >= 2*fmax)
-    // 500kHz信号需要至少1MHz采样率，使用2MHz确保精度
-    status = ADC_Set_Sample_Rate(200000.0f); // 200kHz
+    // ✅ 针对100kHz信号优化: 2MHz采样率
+    status = ADC_Set_Sample_Rate(2000000.0f);
+
+    if (status != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    // ✅ 新增: 验证实际采样率
+    float actual_rate = ADC_Get_Sample_Rate();
+
+    // 允许±5%误差
+    if (fabsf(actual_rate - 2000000.0f) > 100000.0f)
+    {
+        // 采样率设置失败,尝试降级
+        status = ADC_Set_Sample_Rate(1000000.0f);
+        if (status != HAL_OK)
+        {
+            Error_Handler();
+        }
+    }
 }
 
 /**
@@ -227,10 +243,30 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 }
 
 /**
- * @brief  获取当前采样率
+ * @brief  获取当前采样率 (修复版)
  * @return 当前采样率 (Hz)
  */
 float ADC_Get_Sample_Rate(void)
 {
-    return current_sample_rate;
+    // ✅ 从定时器寄存器直接读取,不依赖缓存值
+    uint32_t tim2_clk = HAL_RCC_GetPCLK1Freq();
+    RCC_ClkInitTypeDef clk_init;
+    uint32_t flash_latency;
+    HAL_RCC_GetClockConfig(&clk_init, &flash_latency);
+
+    if (clk_init.APB1CLKDivider != RCC_HCLK_DIV1)
+    {
+        tim2_clk *= 2;
+    }
+
+    // 从硬件寄存器读取实际配置
+    uint32_t prescaler = htim2.Instance->PSC + 1;
+    uint32_t period = htim2.Instance->ARR + 1;
+
+    float actual_rate = (float)tim2_clk / (float)prescaler / (float)period;
+
+    // 更新缓存值
+    current_sample_rate = actual_rate;
+
+    return actual_rate;
 }

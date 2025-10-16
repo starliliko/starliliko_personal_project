@@ -228,21 +228,43 @@ static void update_measurement_table(void)
     ch2_current_v = wave_data->ch2_params.avg_voltage;
     ch2_freq = wave_data->ch2_params.frequency;
 
-    char ch1_cur[15], ch2_cur[15];
+    // ✅ 新增: 实时显示采样率验证
+    float actual_rate = ADC_Get_Sample_Rate();
+
+    char ch1_cur[20], ch2_cur[20];
     snprintf(ch1_cur, sizeof(ch1_cur), "%.2fV", ch1_current_v);
     snprintf(ch2_cur, sizeof(ch2_cur), "%.2fV", ch2_current_v);
     lv_table_set_cell_value(measurement_table, 1, 0, "Value");
     lv_table_set_cell_value(measurement_table, 1, 1, ch1_cur);
     lv_table_set_cell_value(measurement_table, 1, 2, ch2_cur);
 
-    char ch1_freq_str[15], ch2_freq_str[15];
-    snprintf(ch1_freq_str, sizeof(ch1_freq_str), "%.1fkHz", ch1_freq / 1000.0f);
-    snprintf(ch2_freq_str, sizeof(ch2_freq_str), "%.1fkHz", ch2_freq / 1000.0f);
+    // ✅ 改进: 显示调试信息
+    char ch1_freq_str[25], ch2_freq_str[25];
+
+    // 格式: "50.0kHz (2.0M)"
+    if (ch1_freq >= 1000.0f)
+        snprintf(ch1_freq_str, sizeof(ch1_freq_str), "%.1fkHz", ch1_freq / 1000.0f);
+    else
+        snprintf(ch1_freq_str, sizeof(ch1_freq_str), "%.0fHz", ch1_freq);
+
+    if (ch2_freq >= 1000.0f)
+        snprintf(ch2_freq_str, sizeof(ch2_freq_str), "%.1fkHz", ch2_freq / 1000.0f);
+    else
+        snprintf(ch2_freq_str, sizeof(ch2_freq_str), "%.0fHz", ch2_freq);
+
     lv_table_set_cell_value(measurement_table, 2, 0, "Frequency");
     lv_table_set_cell_value(measurement_table, 2, 1, ch1_freq_str);
     lv_table_set_cell_value(measurement_table, 2, 2, ch2_freq_str);
 
-    lv_table_set_cell_value(measurement_table, 3, 2, "External");
+    // ✅ 第3行: 显示采样率验证
+    char rate_str[20];
+    snprintf(rate_str, sizeof(rate_str), "%.2fMHz", actual_rate / 1000000.0f);
+    lv_table_set_cell_value(measurement_table, 3, 0, "Sample Rate");
+    lv_table_set_cell_value(measurement_table, 3, 1, rate_str);
+
+    // 波形类型
+    const char *wave_type_str[] = {"Unk", "Sin", "Sqr", "Tri", "Saw", "DC", "Noi"};
+    lv_table_set_cell_value(measurement_table, 3, 2, wave_type_str[wave_data->ch1_params.wave_type]);
 }
 
 /* 刷新定时器回调 */

@@ -11,12 +11,12 @@
 #define GRID_X_COUNT 10 // 水平10格
 #define GRID_Y_COUNT 8  // 垂直8格
 
-/* ✅ 修改: FFT优化的缓冲区配置 */
-#define DISPLAY_BUFFER_SIZE 1024 // 与CHANNEL_BUFFER_SIZE保持一致
+/* ✅ 修改: 扩大缓冲区支持高速采样 */
+#define DISPLAY_BUFFER_SIZE 2048 // 保持不变
 
 /* 时基配置 - 控制时间窗口 */
-#define TIME_DIV 0.0001f // ✅ 修复: 0.2ms/格 = 2ms总窗口 (适合10-30kHz)
-                         // 通过 waveform_set_tscale() 函数设置到波形任务中生效
+// ✅ 关键修改: 时基调整为5μs/格
+#define TIME_DIV 0.000005f // 5μs/格 → 总窗口50μs → 显示5个100kHz周期
 
 /* 电压参数 */
 #define V_PER_DIV 0.5f                          // 每格电压：0.5V
