@@ -73,7 +73,7 @@ oscilloscope/    - Build output directory with scatter file (.sct)
 ### Essential Debug Commands
 ```bash
 # Build via Keil command line
-D:\IDE\keil5\keil5MDK\UV4\UV4.exe -b oscilloscope.uvprojx -j0 -t oscilloscope
+UV4.exe -b oscilloscope.uvprojx -j0 -t oscilloscope
 ```
 
 ## Code Conventions

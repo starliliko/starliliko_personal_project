@@ -53,13 +53,16 @@ Mkfile.old
 dkms.conf
 
 # IDE and editor-local files
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.example.json
+**/.vscode/*
+!**/.vscode/extensions.json
+!**/.vscode/settings.example.json
 *.uvguix.*
 *.uvguix
+*.uvoptx
 *.bak
 *.log
+*.log.lock
+*.lst
 
 # Keil MDK build output
 MDK-ARM/oscilloscope/
