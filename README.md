@@ -76,13 +76,12 @@ LVGL 任务（波形与参数显示）
   电路后需要重新验证。
 - 源码中的部分中文注释存在历史编码问题，不影响编译，但建议后续统一为
   UTF-8。
-- 仓库历史中曾提交 Keil 构建产物和用户级 IDE 文件；新的忽略规则会阻止
-  后续新增，但已被 Git 跟踪的文件仍需在单独提交中解除跟踪。
 
 ## 文档
 
-- `docs/contest_report/`：课程设计报告的 Markdown 整理稿
-- `综合电子系统设计报告 李彦博 1231002006.doc`：原始课程报告
+- [`docs/contest_report/06_combined_report.md`](docs/contest_report/06_combined_report.md)：
+  已移除个人身份信息的课程设计报告 Markdown 整理稿
+- [`docs/contest_report/`](docs/contest_report/)：摘要、正文、测试记录与答辩提纲
 - `readme/安富莱_STM32-V6开发板_二代示波器设计教程（V1.0）.pdf`：
   参考资料
 
